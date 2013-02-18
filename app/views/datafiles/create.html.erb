@@ -1,0 +1,11 @@
+<h1>Datafiles#create</h1>
+<p>Find me in app/views/datafiles/create.html.erb</p>
+<h1>File Upload</h1>
+<%= form_tag 'datafiles', :multipart => true do %>
+    <%= file_field_tag "data" %>
+    <%= submit_tag "Upload" %>
+<% end %>
+
+<pre>
+  <%= @file.inspect %>
+</pre>

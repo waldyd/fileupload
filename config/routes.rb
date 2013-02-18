@@ -1,4 +1,6 @@
-Fileupload::Application.routes.draw do
+Fileupload::Application.routes.draw do  
+  get "datafiles/create"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -12,7 +14,8 @@ Fileupload::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  resources :datafiles
+  
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -24,6 +27,8 @@ Fileupload::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+
+  #
 
   # Sample resource route with sub-resources:
   #   resources :products do
@@ -49,6 +54,7 @@ Fileupload::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+  root :to => 'datafiles#create'
 
   # See how all your routes lay out with "rake routes"
 
