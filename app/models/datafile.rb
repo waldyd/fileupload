@@ -9,8 +9,10 @@ class Datafile < ActiveRecord::Base
   end
   
   def saveFile=(binary)
-    File.open(Rails.root.join('public', 'uploads', binary.original_filename), 'w') do |file|
-    file.write(binary.read)
+    if not binary.nil?
+      File.open(Rails.root.join('public', 'uploads', binary.original_filename), 'w') do |file|
+      file.write(binary.read)
+      end
     end
   end
 end

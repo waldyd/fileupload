@@ -15,13 +15,12 @@ class DatafilesController < ApplicationController
 
     @file.persistFileParam = @file_metadata
     @file.saveFile = @file_metadata 
-=begin
-    if Datafile.new.save
+=begin    if @file_metadata #@file.saveFile
       flash[:notice] = "Thank you for your submission..."
-      redirect_to :action => "index"
+      #redirect_to :action => "index"
     else
       flash[:error] = "There was a problem submitting your attachment."
-      render :action => "new"
+      #render :action => "new"
     end
 =end
   end
