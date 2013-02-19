@@ -6,17 +6,14 @@ class DatafilesController < ApplicationController
 
 
   def create
-    @filename=params[:data]
-    flash[:notice] = "controller"
-    return if params[:data].blank?
-     
+    @parameters = params
+    @file_metadata = params[:data]
+    @file = Datafile.new
 
-    flash[:notice] = "controller"
-    @filename=Datafile.new
+
+    #@file.uploaded_file = @file_metadata
+
 =begin
-    @file.uploaded_file = params[:datafile]
-    flash[:notice] = "model reached"
-
     if Datafile.new.save
       flash[:notice] = "Thank you for your submission..."
       redirect_to :action => "index"
