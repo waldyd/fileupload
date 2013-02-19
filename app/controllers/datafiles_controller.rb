@@ -4,14 +4,11 @@ class DatafilesController < ApplicationController
         send_data @filename.data, :filename => @attachment.filename, :type => @attachment.content_type
   end
 
-
   def create
-    @parameters = params
-    @file_metadata = params[:data]
+    @file_metadata = params[:attachment]
     @file = Datafile.new
 
-
-    #@file.uploaded_file = @file_metadata
+    @file.uploaded_file = @file_metadata
 
 =begin
     if Datafile.new.save
