@@ -1,21 +1,16 @@
 class Datafile < ActiveRecord::Base
-  def uploaded_file=(incoming_file)
-    @model_file = incoming_file    
-	#self.filename = incoming_file.original_filename
-        #self.content_type = incoming_file.content_type
-        #self.data = incoming_file.read
-    logger.debug "From Model: #{@model_file.inspect}"
+  def persistFileParam=(file)
+    logger.debug "From Model: #{file.inspect}"
+    
+    if not file.nil?
+      write_attribute("filename", file.original_filename)
+      #self.data = file.read
+    end
   end
-
-  def filename=(new_filename)
-    write_attribute("filename", sanitize_filename(new_filename))
-  end
-
-  private
-  def sanitize_filename(filename)
-      #get only the filename, not the whole path (from IE)
-      just_filename = File.basename(filename)
-      #replace all non-alphanumeric, underscore or periods with underscores
-      just_filename.gsub(/[^\w\.\-]/, '_')
+  
+  def saveFile=(binary)
+    File.open(Rails.root.join('public', 'uploads', binary.original_filename), 'w') do |file|
+    file.write(binary.read)
+    end
   end
 end
